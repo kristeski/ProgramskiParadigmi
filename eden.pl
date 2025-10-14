@@ -1,10 +1,35 @@
-bigger(elephant, horse).
-bigger(horse, donkey).
-bigger(donkey, dog).
-bigger(donkey, monkey).
+listicka([elephant, horse, monkey])
+drugalista([monkey, dog, donkey])
 
-is_bigger(X, Y) :- bigger(X, Y).
-is_bigger(X, Y) :- bigger(X, Z), is_bigger(Z, Y).
+list1([a, b, c]).
+list2([c, d, e]).
 
-[elephant, horse, donkey, dog]
-[a, X, [], f(X,y), 47, [a,b,c], bigger(cow,dog)]
+my_append([], L, L).
+my_append([H|T], L, [H|R]) :-
+    my_append(T, L, R).
+
+father(vladimir, kristijan).
+father(zoran, marko).
+father(miki, marika).
+father(martin, petar).
+father(kristijan, peso).
+father(kristijan, damjan).
+
+mother(maja, marika).
+mother(daniela, kristijan).
+mother(strumfeta, damjan).
+mother(biljana, peso).
+mother(marina, marko).
+
+
+parent(X, Y) :-
+    father(X, Y);
+    mother(X, Y).
+
+ancestor(X, Y) :-
+    parent(X, Y).
+
+ancestor(X, Y) :-
+    parent(X, Z),
+    ancestor(Z, Y).
+
