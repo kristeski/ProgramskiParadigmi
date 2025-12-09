@@ -75,3 +75,17 @@ mxn([], 0).
 mxn([H|T], X):- not(el(H)), !, mxn(T, Y), X is max(H, Y).
 mxn([H|T], X):- mxn(H, Hr), mxn(T, Tr), X is max(Hr, Tr). 
 
+
+
+c(X, [X|_]):- !.
+c(X,[_|L]):- c(X, L).
+
+con([], L, L).
+con([X|O], L, [X|LN]):- con(O, L, LN).
+
+pod([_]).
+pod([X, Y|L]):- X =< Y, pod([Y|L]).
+
+nc(X, [X|_], 1).
+nc(X, [_|L], N):- nc(X, L, M), N is M + 1.
+
